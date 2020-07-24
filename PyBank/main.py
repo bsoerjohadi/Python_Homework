@@ -4,10 +4,13 @@ import csv
 
 # Set path for file
 csvpath = os.path.join("Resources", "budget_data.csv")
+write_file = open(os.path.join("Analysis", "pybank_analysis.txt"), 'w')
 
 # Header
 print("Financial Analysis")
 print("-----------------------")
+write_file.write("Financial Analysis \n")
+write_file.write("----------------------- \n")
 
 # Open the CSV
 with open(csvpath) as csvfile:
@@ -25,6 +28,8 @@ with open(csvpath) as csvfile:
         profit_losses.append(int(row[1]))
     print("Total Months: " + str(len(month)))
     print(f"Net Total Profit/Losses: {sum(profit_losses)}")
+    write_file.write("Total Months: " + str(len(month)) + "\n")
+    write_file.write(f"Net Total Profit/Losses: {sum(profit_losses)} \n")
 
 
     # The average of the changes in "Profit/Losses" over the entire period
@@ -33,6 +38,7 @@ with open(csvpath) as csvfile:
         monthly_change.append(profit_losses[i+1]-profit_losses[i])
         average_change = sum(monthly_change)/len(monthly_change)
     print(f"Average Changes: {round(average_change, 2)}")
+    write_file.write(f"Average Changes: {round(average_change, 2)} \n")
 
 
     # The greatest increase in profits (date and amount) over the entire period
@@ -41,7 +47,8 @@ with open(csvpath) as csvfile:
     increase_index = monthly_change.index(max_increase)
     #print(increase_index)
     print(f"Greatest Increase in Profits: {month[increase_index + 1]} (${max_increase})")
-    
+    write_file.write(f"Greatest Increase in Profits: {month[increase_index + 1]} (${max_increase}) \n")
+
 
     # The greatest decrease in losses (date and amount) over the entire period
     max_decrease = min(monthly_change)
@@ -49,5 +56,7 @@ with open(csvpath) as csvfile:
     decrease_index = monthly_change.index(max_decrease)
     #print(decrease_index)
     print(f"Greatest Decrease in Profits: {month[decrease_index + 1]} (${max_decrease})")
+    write_file.write(f"Greatest Decrease in Profits: {month[decrease_index + 1]} (${max_decrease}) \n")
+
 
     

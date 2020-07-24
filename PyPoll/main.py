@@ -4,10 +4,13 @@ import csv
 
 # Set path for file
 csvpath = os.path.join("Resources", "election_data.csv")
+write_file = open(os.path.join("Analysis", "pypoll_analysis.txt"), 'w')
 
 # Prining Header
 print("Election Results")
 print("-----------------------")
+write_file.write("Election Results \n")
+write_file.write("----------------------- \n")
 
 
 # Open the CSV
@@ -38,6 +41,8 @@ with open(csvpath) as csvfile:
 # Printing Total Votes  
     print("Total Votes: " + str(len(voters)))
     print("-----------------------")
+    write_file.write("Total Votes: " + str(len(voters)) + "\n")
+    write_file.write("----------------------- \n")
     #print (candidate_names) # A complete list of candidates who received votes
     
 
@@ -69,9 +74,16 @@ with open(csvpath) as csvfile:
 
 # Printing everthing else 
     print(f"Correy: {Correy_percent}% ({(str(len(Correy)))})")
+    write_file.write(f"Correy: {Correy_percent}% ({(str(len(Correy)))}) \n")
     print(f"Li: {Li_percent}% ({(str(len(Li)))})")
+    write_file.write(f"O'Tooley: {Otooley_percent}% ({(str(len(Otooley)))}) \n")
     print(f"O'Tooley: {Otooley_percent}% ({(str(len(Otooley)))})")
+    write_file.write(f"O'Tooley: {Otooley_percent}% ({(str(len(Otooley)))}) \n")
     print(f"Khan: {Khan_percent}% ({(str(len(Khan)))})")
+    write_file.write(f"Khan: {Khan_percent}% ({(str(len(Khan)))}) \n")
     print("-----------------------")
-    print(Winner)
+    write_file.write("----------------------- \n")
+    print(f"Winner: {Winner}")
+    write_file.write(f"Winner: {Winner} \n")
     print("-----------------------")
+    write_file.write("----------------------- \n")
